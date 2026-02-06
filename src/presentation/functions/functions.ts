@@ -7,7 +7,7 @@ import settingsStore from "../stores/settingsStore";
  * Calculates the factorial row for a given number.
  * @customfunction
  * @param {number} n Number to calculate factorial row for
- * @return {Array<Array<number>>} The factorial as a 2D array.
+ * @return The factorial as a 2D array.
  */
 export function FACTORIALROW(n: number): number[][] {
   const mode = settingsStore.getState().factorialMode;

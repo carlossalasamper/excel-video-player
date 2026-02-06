@@ -13,8 +13,7 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["src/*"]
-    },
-    "noEmit": true
+    }
   },
   "include": ["src"]
 }
