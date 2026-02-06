@@ -1,0 +1,9 @@
+# Build output
+dist/
+test/testBuild
+
+# Node modules folder
+node_modules/
+
+# System files
+.DS_Store
