@@ -1,5 +1,6 @@
 {
   "name": "excel-video-player",
+  "description": "Use an Excel sheet as monitor for your videos.",
   "version": "0.0.1",
   "author": {
     "name": "Carlos Sala Samper",

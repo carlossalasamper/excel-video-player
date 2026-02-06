@@ -1,10 +1,10 @@
-# Test Velixo
+# Excel Video Player
 
 <p align="center">
 <img src="./assets/logo.jpg" alt="" width="300" height="300" />
 </p>
 <p align="center">
-Excel add-in to calculate number factorials.
+Use an Excel sheet as monitor for your videos.
 </p>
 
 ## Stack
@@ -16,65 +16,14 @@ Excel add-in to calculate number factorials.
 - 🛡️ **TypeScript**: catch runtime errors before they happen
 - 🎨 **FluentUI**: cross platform UX framework
 
-## Optional points
-
-- ✅ Add a task pane to the add-in using a UI and state management framework of your choice. On the task pane, add a radio button that switches between row and column mode. In column mode, the function should return a column of values instead of a row. Toggling the button should recalculate the workbook and produce a result with a different orientation.
-- ✅ Persist the selection of the setting on the task pane: the value of the setting should survive after reloading the page with Microsoft Excel Online.
-- ✅ Caching that ensures that any individual value of N! is only calculated once.
-
-## Architecture
-
-I briefly explain each of the four layers that make up clean architecture within the [/src](./src) folder:
-
-```
-└── /src
-    ├── /utils
-    ├── /domain
-    ├── /application
-    ├── /infrastructure
-    └── /presentation
-```
-
-### Utils
-
-Pure functions shared along the app.
-
-### Domain
-
-This layer contains all the enterprise business rules: entities, specifications...
-
-### Application
-
-This layer contains the app use cases.
-
-### Infrastructure
-
-This layer contains the technical details (implementation) of the domain layer and third parties integrations.
-
-### Presentation
-
-This layer contains the presentation related source code: views, browser integration, appearance...
-
-### References
-
-- https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
-- https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
-
 ## Code you can trust
 
-[Check the tests](./src/utils) written for pure functions.
+You can trust my code. It's covered in tests.
 
 <img src="./assets/badges/coverage/badge-functions.svg" />
 <img src="./assets/badges/coverage/badge-lines.svg" />
 <img src="./assets/badges/coverage/badge-statements.svg" />
 <img src="./assets/badges/coverage/badge-branches.svg" />
-
-## AI usage
-
-I use AI daily when I work in the following way:
-
-- **GitHub Copilot**: integrated into my IDE to predict changes I'm going to make to a file. Basically, like **smart autocomplete feature**.
-- **Chat GPT**: I exchange theoretical ideas or explain my problems to avoid getting stuck. **It's my rubber ducky 🐤**.
 
 ## Build Excel add-ins using Office Add-ins Development Kit
 
