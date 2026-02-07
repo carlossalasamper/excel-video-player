@@ -1,6 +1,6 @@
 {
   "name": "excel-video-player",
-  "description": "📺 Visualize videos in Excel sheets with the Excel Video Player add-in.",
+  "description": "📺 Add-in to visualize videos in Excel sheets.",
   "version": "0.0.1",
   "author": {
     "name": "Carlos Sala Samper",

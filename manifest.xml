@@ -5,7 +5,7 @@
   <ProviderName>Carlos Sala Samper</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Excel Video Player"/>
-  <Description DefaultValue="📺 Visualize videos in Excel sheets with the Excel Video Player add-in."/>
+  <Description DefaultValue="📺 Add-in to visualize videos in Excel sheets."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>

@@ -4,7 +4,7 @@
 <img src="./assets/logo.jpg" alt="" width="300" height="300" />
 </p>
 <p align="center">
-<b>📺 Visualize videos in Excel sheets</b> with the Excel Video Player add-in.
+📺 Add-in to visualize videos in Excel sheets.
 </p>
 
 ## Benchmarks
