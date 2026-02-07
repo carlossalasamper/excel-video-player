@@ -7,13 +7,41 @@
 📺 Add-in to visualize videos in Excel sheets.
 </p>
 
-## Benchmarks
+## Table of Contents
+
+- [Why](#why)
+- [How it Works](#how-it-works)
+- [Benchmarks](#benchmarks)
+- [Stack](#stack)
+- [Code You Can Trust](#code-you-can-trust)
+- [Build Excel Add-ins Using Office Add-ins Development Kit](#build-excel-add-ins-using-office-add-ins-development-kit)
+- [How To Run This Project](#how-to-run-this-project)
+- [License](#license)
+
+## Why
 
 // TODO
 
 ## How It Works
 
 // TODO
+
+## Benchmarks
+
+_The more FPS, the better!_
+
+|     | FPS | Resolution | Color depth (bpp) | Other conditions |                        Developer                        |
+| :-: | :-: | :--------: | :---------------: | :--------------: | :-----------------------------------------------------: |
+| 🥇  |  5  |    16x9    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
+| 🥈  |  2  |   32x18    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
+| 🥉  |  1  |   64x36    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
+
+Can you do it better? Prove it.
+
+1. 💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare).
+2. ✅ I will validate the benchmark on my machine as soon as possible.
+
+<small>A benchmark will be considered valid if it maintains the number of frames per second without freezing for the entire duration of [the project's test video](./assets/videos/big-buck-bunny-360p.mp4).</small>
 
 ## Stack
 
@@ -59,35 +87,6 @@ Excel add-ins are integrations built by third parties into Excel by using [Excel
 1. **Stop Previewing Your Office Add-in**
 
    Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
-
-## Troubleshooting
-
-If you have problems running the add-in, take these steps.
-
-- Close any open instances of Excel.
-- Close the previous web server started for the add-in with the **Stop Previewing Your Office Add-in** Office Add-ins Development Kit extension option.
-
-If you still have problems, see [troubleshoot development errors](https://learn.microsoft.com//office/dev/add-ins/testing/troubleshoot-development-errors) or [create a GitHub issue](https://aka.ms/officedevkitnewissue) and we'll help you.
-
-For information on running the add-in on Excel on the web, see [Sideload Office Add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
-
-For information on debugging on older versions of Office, see [Debug add-ins using developer tools in Microsoft Edge Legacy](https://learn.microsoft.com/office/dev/add-ins/testing/debug-add-ins-using-devtools-edge-legacy).
-
-## Make Code Changes
-
-All the information about Office Add-ins is found in our [official documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins). You can also explore more samples in the Office Add-ins Development Kit. Select **View Samples** to see more samples of real-world scenarios.
-
-If you edit the manifest as part of your changes, use the **Validate Manifest File** option in the Office Add-ins Development Kit. This shows you errors in the manifest syntax.
-
-## Engage With the Team
-
-Did you experience any problems? [Create an issue](https://aka.ms/officedevkitnewissue) and we'll help you out.
-
-Want to learn more about new features and best practices for the Office platform? [Join the Microsoft Office Add-ins community call](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins-community-call).
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## License
 
