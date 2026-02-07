@@ -71,7 +71,7 @@ const Settings: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>,
     data: InputOnChangeData
   ) => {
-    setFps(parseInt(data.value));
+    setFps(parseFloat(data.value));
   };
   const onVideoUrlChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -127,7 +127,7 @@ const Settings: React.FC = () => {
           aria-labelledby={fpsId}
           value={fps.toString()}
           onChange={onFpsChange}
-          min={1}
+          min={0.1}
         ></Input>
       </div>
 

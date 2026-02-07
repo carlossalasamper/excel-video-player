@@ -19,6 +19,7 @@ const useStyles = makeStyles({
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     width: "100%",
     height: "auto",
+    imageRendering: "pixelated",
   },
   outputLabel: {
     margin: "0",
@@ -54,6 +55,8 @@ const VideoPlayer = () => {
       });
 
       if (ctx) {
+        ctx.imageSmoothingEnabled = false;
+
         canvas.width = resolution.width;
         canvas.height = resolution.height;
 
