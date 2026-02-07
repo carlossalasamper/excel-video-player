@@ -60,18 +60,6 @@ Excel add-ins are integrations built by third parties into Excel by using [Excel
 
    Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
-## Use the Add-in Project
-
-The add-in project that you've created contains sample code for a basic task pane add-in.
-
-## Explore the Add-in Code
-
-To explore an Office add-in project, you can start with the key files listed below.
-
-- The `./manifest.xml` file in the root directory of the project defines the settings and capabilities of the add-in. <br>You can check whether your manifest file is valid by selecting **Validate Manifest File** option from the Office Add-ins Development Kit.
-- The `./src/taskpane/taskpane.html` file contains the HTML markup for the task pane.
-- The `./src/taskpane/**/*.tsx` file contains the react code and Office JavaScript API code that facilitates interaction between the task pane and the Excel application.
-
 ## Troubleshooting
 
 If you have problems running the add-in, take these steps.
@@ -97,10 +85,12 @@ Did you experience any problems? [Create an issue](https://aka.ms/officedevkitne
 
 Want to learn more about new features and best practices for the Office platform? [Join the Microsoft Office Add-ins community call](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins-community-call).
 
-## Copyright
-
-Copyright (c) 2024 Microsoft Corporation. All rights reserved.
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## License
+
+The Excel Video Player source code is made available under the MIT license.
+
+Some of the dependencies are licensed differently, with the BSD license, for example.
