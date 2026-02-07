@@ -20,7 +20,13 @@
 
 ## Why
 
-// TODO
+The real question is, **why not?**
+
+Since Excel's inception, its grid system has been used for a wide variety of applications. So why not interpret it as a pixel matrix and **turn it into a monitor for playing videos**?
+
+This is another challenge for tech geeks, where we'll have to use **algorithm optimization and image/video processing techniques** to overcome Excel's technical limitations and <u>achieve the best possible performance</u>.
+
+Help me discover how far we can go.
 
 ## How It Works
 
