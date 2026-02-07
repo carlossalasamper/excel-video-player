@@ -42,7 +42,7 @@ _The more FPS, the better!_
 | 🥈  |  2  |   32x18    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
 | 🥉  |  1  |   64x36    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
 
-Can you do it better? Prove it.
+### Can You Do It Better? Prove It.
 
 1. 💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare).
 2. ✅ I will validate the benchmark on my machine as soon as possible.
