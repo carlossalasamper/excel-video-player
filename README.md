@@ -4,7 +4,7 @@
 <img src="./assets/logo.jpg" alt="" width="300" height="300" />
 </p>
 <p align="center">
-<b>📺 Visualize videos in Excel sheets</b> with Excel Video Player add-in.
+<b>📺 Visualize videos in Excel sheets</b> with the Excel Video Player add-in.
 </p>
 
 ## Benchmarks
@@ -26,7 +26,7 @@
 
 ## Code You Can Trust
 
-You can trust my code. It's covered in tests.
+You can trust this code. It's covered in tests.
 
 <img src="./assets/badges/coverage/badge-functions.svg" />
 <img src="./assets/badges/coverage/badge-lines.svg" />
