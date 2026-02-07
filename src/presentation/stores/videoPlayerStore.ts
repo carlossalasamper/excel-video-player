@@ -40,6 +40,7 @@ videoPlayerStore.subscribe(
         const range = sheet.getRange(rangeAddress);
 
         sheet.activate();
+        sheet.getUsedRange().clear();
 
         range.format.columnWidth = cellSize;
         range.format.rowHeight = cellSize;

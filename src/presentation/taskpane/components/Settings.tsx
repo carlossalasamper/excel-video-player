@@ -14,14 +14,14 @@ const useStyles = makeStyles({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    gap: "24px",
+    gap: "16px",
   },
   settingsItem: {
     display: "flex",
     flexDirection: "column",
     gap: "8px",
     padding: "24px",
-    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
   },
   inputRow: {
     display: "flex",
@@ -29,12 +29,13 @@ const useStyles = makeStyles({
     alignItems: "center",
     gap: "8px",
   },
+  resolutionInput: {
+    maxWidth: "80px",
+  },
 });
 
 const Settings: React.FC = () => {
   const styles = useStyles();
-  const resolutionXId = useId("resolutionX");
-  const resolutionYId = useId("resolutionY");
   const cellSizeId = useId("cellSize");
   const videoUrlId = useId("videoUrl");
   const resolution = useSettingsStore((state) => state.resolution);
@@ -79,27 +80,21 @@ const Settings: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.settingsItem}>
-        <p>Resolution</p>
+        <label>Resolution</label>
         <div className={styles.inputRow}>
-          <div>
-            <label id={resolutionXId}>Width</label>
-            <Input
-              type="number"
-              aria-labelledby={resolutionXId}
-              value={resolution.width.toString()}
-              onChange={onResolutionXChange}
-            ></Input>
-          </div>
-
-          <div>
-            <label id={resolutionYId}>Height</label>
-            <Input
-              type="number"
-              aria-labelledby={resolutionYId}
-              value={resolution.height.toString()}
-              onChange={onResolutionYChange}
-            ></Input>
-          </div>
+          <Input
+            type="number"
+            value={resolution.width.toString()}
+            onChange={onResolutionXChange}
+            className={styles.resolutionInput}
+          ></Input>
+          x
+          <Input
+            type="number"
+            value={resolution.height.toString()}
+            onChange={onResolutionYChange}
+            className={styles.resolutionInput}
+          ></Input>
         </div>
       </div>
 
