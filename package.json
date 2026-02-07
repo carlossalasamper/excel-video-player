@@ -1,6 +1,6 @@
 {
   "name": "excel-video-player",
-  "description": "Use an Excel sheet as monitor for your videos.",
+  "description": "📺 Visualize videos in Excel cells with the Excel Video Player add-in.",
   "version": "0.0.1",
   "author": {
     "name": "Carlos Sala Samper",

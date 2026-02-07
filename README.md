@@ -4,8 +4,16 @@
 <img src="./assets/logo.jpg" alt="" width="300" height="300" />
 </p>
 <p align="center">
-Use an Excel sheet as monitor for your videos.
+<b>📺 Visualize videos in Excel sheets</b> with Excel Video Player add-in.
 </p>
+
+## Benchmarks
+
+// TODO
+
+## How It Works
+
+// TODO
 
 ## Stack
 
@@ -16,7 +24,7 @@ Use an Excel sheet as monitor for your videos.
 - 🛡️ **TypeScript**: catch runtime errors before they happen
 - 🎨 **FluentUI**: cross platform UX framework
 
-## Code you can trust
+## Code You Can Trust
 
 You can trust my code. It's covered in tests.
 
@@ -25,18 +33,18 @@ You can trust my code. It's covered in tests.
 <img src="./assets/badges/coverage/badge-statements.svg" />
 <img src="./assets/badges/coverage/badge-branches.svg" />
 
-## Build Excel add-ins using Office Add-ins Development Kit
+## Build Excel Add-ins Using Office Add-ins Development Kit
 
 Excel add-ins are integrations built by third parties into Excel by using [Excel JavaScript API](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/excel-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins).
 
-## How to run this project
+## How To Run This Project
 
 ### Prerequisites
 
 - Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify that you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
 
-### Run the add-in using Office Add-ins Development Kit extension
+### Run the Add-in Using Office Add-ins Development Kit Extension
 
 1. **Open the Office Add-ins Development Kit**
 
@@ -52,11 +60,11 @@ Excel add-ins are integrations built by third parties into Excel by using [Excel
 
    Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
-## Use the add-in project
+## Use the Add-in Project
 
 The add-in project that you've created contains sample code for a basic task pane add-in.
 
-## Explore the add-in code
+## Explore the Add-in Code
 
 To explore an Office add-in project, you can start with the key files listed below.
 
@@ -77,13 +85,13 @@ For information on running the add-in on Excel on the web, see [Sideload Office 
 
 For information on debugging on older versions of Office, see [Debug add-ins using developer tools in Microsoft Edge Legacy](https://learn.microsoft.com/office/dev/add-ins/testing/debug-add-ins-using-devtools-edge-legacy).
 
-## Make code changes
+## Make Code Changes
 
 All the information about Office Add-ins is found in our [official documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins). You can also explore more samples in the Office Add-ins Development Kit. Select **View Samples** to see more samples of real-world scenarios.
 
 If you edit the manifest as part of your changes, use the **Validate Manifest File** option in the Office Add-ins Development Kit. This shows you errors in the manifest syntax.
 
-## Engage with the team
+## Engage With the Team
 
 Did you experience any problems? [Create an issue](https://aka.ms/officedevkitnewissue) and we'll help you out.
 
