@@ -1,41 +1,53 @@
 import { useStore } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 import { createStore } from "zustand/vanilla";
-
-import { FactorialMode } from "../types/FactorialMode";
+import Resolution from "../types/Resolution";
 
 interface SettingsState {
-  factorialMode: FactorialMode;
-  setFactorialMode: (mode: FactorialMode) => void;
+  resolution: Resolution;
+  videoUrl: string;
+  setResolution: (resolution: Resolution) => void;
+  setVideoUrl: (videoUrl: string) => void;
 }
 
 const settingsStore = createStore<SettingsState>()(
   subscribeWithSelector((set) => ({
-    factorialMode: "column",
-    setFactorialMode: (mode: FactorialMode) => {
-      set(() => ({ factorialMode: mode }));
+    resolution: [192, 108],
+    videoUrl: "",
+    setResolution: (resolution: Resolution) => {
+      set(() => ({ resolution }));
+    },
+    setVideoUrl: (videoUrl: string) => {
+      set(() => ({ videoUrl }));
     },
   }))
 );
 
 Office.onReady(() => {
-  const savedFactorialMode =
-    Office.context.document.settings.get("factorialMode");
+  const savedResolution = Office.context.document.settings.get("resolution");
+  const savedVideoUrl = Office.context.document.settings.get("videoUrl");
 
-  if (savedFactorialMode) {
-    settingsStore.setState({ factorialMode: savedFactorialMode });
+  if (savedResolution) {
+    settingsStore.setState({ resolution: savedResolution });
+  }
+
+  if (savedVideoUrl) {
+    settingsStore.setState({ videoUrl: savedVideoUrl });
   }
 
   settingsStore.subscribe(
-    (state) => state.factorialMode,
-    (factorialMode) => {
-      Office.context.document.settings.set("factorialMode", factorialMode);
+    (state) => state.resolution,
+    (resolution) => {
+      Office.context.document.settings.set("resolution", resolution);
       Office.context.document.settings.saveAsync();
+    }
+  );
 
-      Excel.run(async (context) => {
-        context.workbook.application.calculate(Excel.CalculationType.full);
-        context.sync();
-      });
+  settingsStore.subscribe(
+    (state) => state.videoUrl,
+    (videoUrl) => {
+      Office.context.document.settings.set("videoUrl", videoUrl);
+      Office.context.document.settings.saveAsync();
     }
   );
 });

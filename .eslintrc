@@ -1,11 +1,12 @@
 {
-  "ignorePatterns": ["coverage"],
+  "ignorePatterns": ["**/*.js", "coverage"],
   "extends": [
     "@carlossalasamper/eslint-config",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
   "rules": {
+    "no-console": "off",
     "react/react-in-jsx-scope": "off",
     "valid-jsdoc": "off"
   },

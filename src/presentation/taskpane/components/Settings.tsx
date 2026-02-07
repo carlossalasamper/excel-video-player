@@ -1,13 +1,14 @@
 import * as React from "react";
 import { useId } from "@fluentui/react-utilities";
 import {
-  RadioGroup,
   tokens,
   makeStyles,
-  Radio,
-  RadioGroupOnChangeData,
+  Input,
+  InputOnChangeData,
+  Button,
 } from "@fluentui/react-components";
-import { useSettingsStore } from "../../stores/settingsStore";
+import { useVideoPlayerStore } from "@/presentation/stores/videoPlayerStore";
+import { useSettingsStore } from "@/presentation/stores/settingsStore";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -22,33 +23,96 @@ const useStyles = makeStyles({
     padding: "24px",
     border: `1px solid ${tokens.colorNeutralStroke1}`,
   },
+  inputRow: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "8px",
+  },
 });
 
 const Settings: React.FC = () => {
   const styles = useStyles();
-  const factorialModeId = useId("factorial-mode");
-  const factorialMode = useSettingsStore((state) => state.factorialMode);
-  const setFactorialMode = useSettingsStore((state) => state.setFactorialMode);
-  const onFactorialModeChange = (
-    event: React.FormEvent<HTMLDivElement>,
-    data: RadioGroupOnChangeData
+  const resolutionXId = useId("resolutionX");
+  const resolutionYId = useId("resolutionY");
+  const videoUrlId = useId("videoUrl");
+  const resolution = useSettingsStore((state) => state.resolution);
+  const setResolution = useSettingsStore((state) => state.setResolution);
+  const videoUrl = useSettingsStore((state) => state.videoUrl);
+  const setVideoUrl = useSettingsStore((state) => state.setVideoUrl);
+  const isPlaying = useVideoPlayerStore((state) => state.isPlaying);
+  const setIsPlaying = useVideoPlayerStore((state) => state.setIsPlaying);
+  const onResolutionXChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData
   ) => {
-    setFactorialMode(data.value as "row" | "column");
+    setResolution([parseInt(data.value), resolution[1]]);
+  };
+  const onResolutionYChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData
+  ) => {
+    setResolution([resolution[0], parseInt(data.value)]);
+  };
+  const onVideoUrlChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData
+  ) => {
+    setVideoUrl(data.value);
+  };
+  const onPlayButtonClick = () => {
+    setIsPlaying(true);
+  };
+  const onPauseButtonClick = () => {
+    setIsPlaying(false);
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.settingsItem}>
-        <label id={factorialModeId}>FACTORIALROW Mode</label>
-        <RadioGroup
-          aria-labelledby={factorialModeId}
-          value={factorialMode}
-          onChange={onFactorialModeChange}
-        >
-          <Radio value="row" label="Row" required />
-          <Radio value="column" label="Column" required />
-        </RadioGroup>
+        <p>Resolution</p>
+        <div className={styles.inputRow}>
+          <div>
+            <label id={resolutionXId}>Width</label>
+            <Input
+              type="number"
+              aria-labelledby={resolutionXId}
+              value={resolution[0].toString()}
+              onChange={onResolutionXChange}
+            ></Input>
+          </div>
+
+          <div>
+            <label id={resolutionYId}>Height</label>
+            <Input
+              type="number"
+              aria-labelledby={resolutionYId}
+              value={resolution[1].toString()}
+              onChange={onResolutionYChange}
+            ></Input>
+          </div>
+        </div>
       </div>
+
+      <div className={styles.settingsItem}>
+        <label id={videoUrlId}>Video URL</label>
+        <Input
+          type="text"
+          aria-labelledby={videoUrlId}
+          value={videoUrl}
+          onChange={onVideoUrlChange}
+        ></Input>
+      </div>
+
+      {!isPlaying ? (
+        <Button appearance="primary" onClick={onPlayButtonClick}>
+          Play
+        </Button>
+      ) : (
+        <Button appearance="primary" onClick={onPauseButtonClick}>
+          Pause
+        </Button>
+      )}
     </div>
   );
 };

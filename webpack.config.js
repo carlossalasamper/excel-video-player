@@ -1,9 +1,7 @@
-/* eslint-disable no-undef */
-
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const webpack = require("webpack");
 
 const urlDev = "https://localhost:3000/";
@@ -11,7 +9,11 @@ const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DE
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
-  return { ca: httpsOptions.ca, key: httpsOptions.key, cert: httpsOptions.cert };
+  return {
+    ca: httpsOptions.ca,
+    key: httpsOptions.key,
+    cert: httpsOptions.cert,
+  };
 }
 
 module.exports = async (env, options) => {
@@ -22,7 +24,10 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       react: ["react", "react-dom"],
       runtime: {
-        import: ["./src/presentation/index.ts", "./src/presentation/taskpane/taskpane.html"],
+        import: [
+          "./src/presentation/index.ts",
+          "./src/presentation/taskpane/taskpane.html",
+        ],
         dependOn: "react",
       },
     },
@@ -31,6 +36,11 @@ module.exports = async (env, options) => {
     },
     resolve: {
       extensions: [".ts", ".tsx", ".html", ".js", ".json"],
+      plugins: [
+        new TsconfigPathsPlugin({
+          configFile: "./tsconfig.json",
+        }),
+      ],
     },
     module: {
       rules: [
@@ -61,10 +71,6 @@ module.exports = async (env, options) => {
       ],
     },
     plugins: [
-      new CustomFunctionsMetadataPlugin({
-        output: "functions.json",
-        input: "./src/presentation/functions/functions.ts",
-      }),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/presentation/taskpane/taskpane.html",
@@ -83,7 +89,9 @@ module.exports = async (env, options) => {
               if (dev) {
                 return content;
               } else {
-                return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
+                return content
+                  .toString()
+                  .replace(new RegExp(urlDev, "g"), urlProd);
               }
             },
           },

@@ -1,6 +1,7 @@
 import Header from "./Header";
 import { makeStyles } from "@fluentui/react-components";
 import Settings from "./Settings";
+import VideoPlayer from "./VideoPlayer";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -20,6 +21,8 @@ const App = () => {
         logoAlt="Excel Video Player"
       />
       <Settings />
+
+      <VideoPlayer />
     </div>
   );
 };
