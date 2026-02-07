@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     width: "100%",
     height: "auto",
     imageRendering: "pixelated",
+    backgroundColor: "black",
   },
   outputLabel: {
     margin: "0",
@@ -29,6 +30,8 @@ const useStyles = makeStyles({
 const VideoPlayer = () => {
   const styles = useStyles();
   const isPlaying = useVideoPlayerStore((state) => state.isPlaying);
+  const time = useVideoPlayerStore((state) => state.time);
+  const setTime = useVideoPlayerStore((state) => state.setTime);
   const resolution = useSettingsStore((state) => state.resolution);
   const fps = useSettingsStore((state) => state.fps);
   const setCurrentFrameData = useVideoPlayerStore(
@@ -55,6 +58,18 @@ const VideoPlayer = () => {
       });
 
       if (ctx) {
+        const frameInterval = 1000 / fps;
+        const drawFrame = () => {
+          if (video.paused || video.ended) {
+            stopDrawing();
+          } else {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            setCurrentFrameData(
+              ctx.getImageData(0, 0, canvas.width, canvas.height)
+            );
+          }
+        };
+
         ctx.imageSmoothingEnabled = false;
 
         canvas.width = resolution.width;
@@ -62,17 +77,9 @@ const VideoPlayer = () => {
 
         stopDrawing();
 
-        const frameInterval = 1000 / fps;
-        intervalRef.current = window.setInterval(() => {
-          if (video.paused || video.ended) {
-            stopDrawing();
-            return;
-          }
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          setCurrentFrameData(
-            ctx.getImageData(0, 0, canvas.width, canvas.height)
-          );
-        }, frameInterval);
+        drawFrame();
+
+        intervalRef.current = window.setInterval(drawFrame, frameInterval);
       }
     }
   }, [fps, setCurrentFrameData, stopDrawing, resolution]);
@@ -81,22 +88,24 @@ const VideoPlayer = () => {
     const video = videoRef.current;
 
     if (video) {
-      if (isPlaying && videoUrl) {
-        video.src = videoUrl;
+      if (isPlaying && video.paused) {
+        video.currentTime = time;
         video
           .play()
-          .then(startDrawing)
+          .then(() => startDrawing())
           .catch((err) => console.warn("Playback blocked:", err));
       } else {
         video.pause();
+        setTime(video.currentTime);
+
         stopDrawing();
       }
     }
 
     return stopDrawing;
-  }, [isPlaying, videoUrl, fps, startDrawing, stopDrawing]);
+  }, [isPlaying, videoUrl, fps, startDrawing, stopDrawing, time, setTime]);
 
-  return isPlaying ? (
+  return (
     <div className={styles.wrapper}>
       <p className={styles.outputLabel}>Video Player</p>
       <video
@@ -110,7 +119,7 @@ const VideoPlayer = () => {
       <p className={styles.outputLabel}>Canvas Output</p>
       <canvas ref={canvasRef} className={styles.canvas}></canvas>
     </div>
-  ) : null;
+  );
 };
 
 export default VideoPlayer;

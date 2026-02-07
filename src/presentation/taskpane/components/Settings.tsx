@@ -32,6 +32,12 @@ const useStyles = makeStyles({
   resolutionInput: {
     maxWidth: "80px",
   },
+  playButton: {
+    margin: "16px 24px",
+  },
+  pauseButton: {
+    margin: "16px 24px",
+  },
 });
 
 const Settings: React.FC = () => {
@@ -142,11 +148,19 @@ const Settings: React.FC = () => {
       </div>
 
       {!isPlaying ? (
-        <Button appearance="primary" onClick={onPlayButtonClick}>
+        <Button
+          className={styles.playButton}
+          appearance="primary"
+          onClick={onPlayButtonClick}
+        >
           Play
         </Button>
       ) : (
-        <Button appearance="primary" onClick={onPauseButtonClick}>
+        <Button
+          className={styles.pauseButton}
+          appearance="secondary"
+          onClick={onPauseButtonClick}
+        >
           Pause
         </Button>
       )}

@@ -7,17 +7,23 @@ import { rgbToHex } from "@/utils/rgbToHex";
 
 interface VideoPlayerState {
   isPlaying: boolean;
+  time: number;
   currentFrameData: ImageData | null;
   setIsPlaying: (isPlaying: boolean) => void;
+  setTime: (time: number) => void;
   setCurrentFrameData: (frameData: ImageData) => void;
 }
 
 const videoPlayerStore = createStore<VideoPlayerState>()(
   subscribeWithSelector((set) => ({
     isPlaying: false,
+    time: 0,
     currentFrameData: null,
     setIsPlaying: (isPlaying: boolean) => {
       set(() => ({ isPlaying }));
+    },
+    setTime: (time: number) => {
+      set(() => ({ time }));
     },
     setCurrentFrameData: (frameData: ImageData) => {
       set(() => ({ currentFrameData: frameData }));
@@ -36,13 +42,13 @@ videoPlayerStore.subscribe(
         await context.sync();
 
         context.application.calculationMode = Excel.CalculationMode.manual;
-        context.application.suspendApiCalculationUntilNextSync();
 
         const sheet = existingSheet.isNullObject
           ? context.workbook.worksheets.add("Excel Video Player")
           : existingSheet;
         const resolution = settingsStore.getState().resolution;
         const cellSize = settingsStore.getState().cellSize;
+        const time = videoPlayerStore.getState().time;
         const rangeAddress = getSheetRangeAddress(
           resolution.width,
           resolution.height
@@ -50,11 +56,13 @@ videoPlayerStore.subscribe(
         const range = sheet.getRange(rangeAddress);
 
         sheet.activate();
-        sheet.getUsedRange().clear();
+
+        if (time === 0) {
+          sheet.getUsedRange().clear();
+        }
 
         range.format.columnWidth = cellSize;
         range.format.rowHeight = cellSize;
-        range.format.fill.color = "#000000";
 
         await context.sync();
       }).catch((error) => {
@@ -82,8 +90,11 @@ videoPlayerStore.subscribe(
           resolution.height
         );
         const range = sheet.getRange(rangeAddress);
+        const cellProperties: Excel.SettableCellProperties[][] = [];
 
         for (let row = 0; row < resolution.height; row++) {
+          const rowProps: Excel.SettableCellProperties[] = [];
+
           for (let col = 0; col < resolution.width; col++) {
             const pixelIndex = (row * frameData.width + col) * 4;
             const r = frameData.data[pixelIndex];
@@ -91,9 +102,17 @@ videoPlayerStore.subscribe(
             const b = frameData.data[pixelIndex + 2];
             const hex = rgbToHex(r, g, b);
 
-            range.getCell(row, col).format.fill.color = hex;
+            rowProps.push({
+              format: {
+                fill: { color: hex },
+              },
+            });
           }
+
+          cellProperties.push(rowProps);
         }
+
+        range.setCellProperties(cellProperties);
 
         await context.sync();
       }).catch((error) => {
