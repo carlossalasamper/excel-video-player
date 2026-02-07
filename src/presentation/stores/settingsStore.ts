@@ -6,9 +6,11 @@ import Resolution from "../types/Resolution";
 interface SettingsState {
   resolution: Resolution;
   cellSize: number;
+  fps: number;
   videoUrl: string;
   setResolution: (resolution: Resolution) => void;
   setCellSize: (cellSize: number) => void;
+  setFps: (fps: number) => void;
   setVideoUrl: (videoUrl: string) => void;
 }
 
@@ -16,12 +18,16 @@ const settingsStore = createStore<SettingsState>()(
   subscribeWithSelector((set) => ({
     resolution: { width: 160, height: 90 },
     cellSize: 4,
+    fps: 2,
     videoUrl: "",
     setResolution: (resolution: Resolution) => {
       set(() => ({ resolution }));
     },
     setCellSize: (cellSize: number) => {
       set(() => ({ cellSize }));
+    },
+    setFps: (fps: number) => {
+      set(() => ({ fps }));
     },
     setVideoUrl: (videoUrl: string) => {
       set(() => ({ videoUrl }));
@@ -32,6 +38,7 @@ const settingsStore = createStore<SettingsState>()(
 Office.onReady(() => {
   const savedResolution = Office.context.document.settings.get("resolution");
   const savedCellSize = Office.context.document.settings.get("cellSize");
+  const savedFps = Office.context.document.settings.get("fps");
   const savedVideoUrl = Office.context.document.settings.get("videoUrl");
 
   if (savedResolution) {
@@ -40,6 +47,10 @@ Office.onReady(() => {
 
   if (savedCellSize) {
     settingsStore.setState({ cellSize: savedCellSize });
+  }
+
+  if (savedFps) {
+    settingsStore.setState({ fps: savedFps });
   }
 
   if (savedVideoUrl) {
@@ -58,6 +69,14 @@ Office.onReady(() => {
     (state) => state.cellSize,
     (cellSize) => {
       Office.context.document.settings.set("cellSize", cellSize);
+      Office.context.document.settings.saveAsync();
+    }
+  );
+
+  settingsStore.subscribe(
+    (state) => state.fps,
+    (fps) => {
+      Office.context.document.settings.set("fps", fps);
       Office.context.document.settings.saveAsync();
     }
   );

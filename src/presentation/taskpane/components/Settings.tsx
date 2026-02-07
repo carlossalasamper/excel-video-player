@@ -37,11 +37,14 @@ const useStyles = makeStyles({
 const Settings: React.FC = () => {
   const styles = useStyles();
   const cellSizeId = useId("cellSize");
+  const fpsId = useId("fps");
   const videoUrlId = useId("videoUrl");
   const resolution = useSettingsStore((state) => state.resolution);
   const setResolution = useSettingsStore((state) => state.setResolution);
   const cellSize = useSettingsStore((state) => state.cellSize);
   const setCellSize = useSettingsStore((state) => state.setCellSize);
+  const fps = useSettingsStore((state) => state.fps);
+  const setFps = useSettingsStore((state) => state.setFps);
   const videoUrl = useSettingsStore((state) => state.videoUrl);
   const setVideoUrl = useSettingsStore((state) => state.setVideoUrl);
   const isPlaying = useVideoPlayerStore((state) => state.isPlaying);
@@ -63,6 +66,12 @@ const Settings: React.FC = () => {
     data: InputOnChangeData
   ) => {
     setCellSize(parseInt(data.value));
+  };
+  const onFpsChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData
+  ) => {
+    setFps(parseInt(data.value));
   };
   const onVideoUrlChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -87,6 +96,7 @@ const Settings: React.FC = () => {
             value={resolution.width.toString()}
             onChange={onResolutionXChange}
             className={styles.resolutionInput}
+            min={1}
           ></Input>
           x
           <Input
@@ -94,6 +104,7 @@ const Settings: React.FC = () => {
             value={resolution.height.toString()}
             onChange={onResolutionYChange}
             className={styles.resolutionInput}
+            min={1}
           ></Input>
         </div>
       </div>
@@ -105,6 +116,18 @@ const Settings: React.FC = () => {
           aria-labelledby={cellSizeId}
           value={cellSize.toString()}
           onChange={onCellSizeChange}
+          min={1}
+        ></Input>
+      </div>
+
+      <div className={styles.settingsItem}>
+        <label id={fpsId}>FPS</label>
+        <Input
+          type="number"
+          aria-labelledby={fpsId}
+          value={fps.toString()}
+          onChange={onFpsChange}
+          min={1}
         ></Input>
       </div>
 

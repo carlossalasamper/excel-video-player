@@ -1,7 +1,7 @@
 import { useSettingsStore } from "@/presentation/stores/settingsStore";
 import { useVideoPlayerStore } from "@/presentation/stores/videoPlayerStore";
 import { makeStyles, tokens } from "@fluentui/react-components";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -28,32 +28,51 @@ const useStyles = makeStyles({
 const VideoPlayer = () => {
   const styles = useStyles();
   const isPlaying = useVideoPlayerStore((state) => state.isPlaying);
+  const resolution = useSettingsStore((state) => state.resolution);
+  const fps = useSettingsStore((state) => state.fps);
+  const setCurrentFrameData = useVideoPlayerStore(
+    (state) => state.setCurrentFrameData
+  );
   const videoUrl = useSettingsStore((state) => state.videoUrl);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const startDrawing = () => {
+  const intervalRef = useRef<number | null>(null);
+  const stopDrawing = useCallback(() => {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+  const startDrawing = useCallback(() => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
 
     if (video && canvas) {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d", {
+        willReadFrequently: true,
+        alpha: false,
+      });
 
       if (ctx) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+        canvas.width = resolution.width;
+        canvas.height = resolution.height;
 
-        if ("requestVideoFrameCallback" in video) {
-          const render = () => {
-            if (video.paused || video.ended) return;
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            video.requestVideoFrameCallback(render);
-          };
+        stopDrawing();
 
-          video.requestVideoFrameCallback(render);
-        }
+        const frameInterval = 1000 / fps;
+        intervalRef.current = window.setInterval(() => {
+          if (video.paused || video.ended) {
+            stopDrawing();
+            return;
+          }
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          setCurrentFrameData(
+            ctx.getImageData(0, 0, canvas.width, canvas.height)
+          );
+        }, frameInterval);
       }
     }
-  };
+  }, [fps, setCurrentFrameData, stopDrawing, resolution]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -67,9 +86,12 @@ const VideoPlayer = () => {
           .catch((err) => console.warn("Playback blocked:", err));
       } else {
         video.pause();
+        stopDrawing();
       }
     }
-  }, [isPlaying, videoUrl]);
+
+    return stopDrawing;
+  }, [isPlaying, videoUrl, fps, startDrawing, stopDrawing]);
 
   return isPlaying ? (
     <div className={styles.wrapper}>
@@ -79,6 +101,7 @@ const VideoPlayer = () => {
         className={styles.video}
         playsInline
         controls={false}
+        crossOrigin="anonymous"
         src={videoUrl}
       ></video>
       <p className={styles.outputLabel}>Canvas Output</p>
