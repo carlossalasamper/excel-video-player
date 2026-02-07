@@ -35,9 +35,12 @@ const Settings: React.FC = () => {
   const styles = useStyles();
   const resolutionXId = useId("resolutionX");
   const resolutionYId = useId("resolutionY");
+  const cellSizeId = useId("cellSize");
   const videoUrlId = useId("videoUrl");
   const resolution = useSettingsStore((state) => state.resolution);
   const setResolution = useSettingsStore((state) => state.setResolution);
+  const cellSize = useSettingsStore((state) => state.cellSize);
+  const setCellSize = useSettingsStore((state) => state.setCellSize);
   const videoUrl = useSettingsStore((state) => state.videoUrl);
   const setVideoUrl = useSettingsStore((state) => state.setVideoUrl);
   const isPlaying = useVideoPlayerStore((state) => state.isPlaying);
@@ -46,13 +49,19 @@ const Settings: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>,
     data: InputOnChangeData
   ) => {
-    setResolution([parseInt(data.value), resolution[1]]);
+    setResolution({ width: parseInt(data.value), height: resolution.height });
   };
   const onResolutionYChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     data: InputOnChangeData
   ) => {
-    setResolution([resolution[0], parseInt(data.value)]);
+    setResolution({ width: resolution.width, height: parseInt(data.value) });
+  };
+  const onCellSizeChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData
+  ) => {
+    setCellSize(parseInt(data.value));
   };
   const onVideoUrlChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -77,7 +86,7 @@ const Settings: React.FC = () => {
             <Input
               type="number"
               aria-labelledby={resolutionXId}
-              value={resolution[0].toString()}
+              value={resolution.width.toString()}
               onChange={onResolutionXChange}
             ></Input>
           </div>
@@ -87,11 +96,21 @@ const Settings: React.FC = () => {
             <Input
               type="number"
               aria-labelledby={resolutionYId}
-              value={resolution[1].toString()}
+              value={resolution.height.toString()}
               onChange={onResolutionYChange}
             ></Input>
           </div>
         </div>
+      </div>
+
+      <div className={styles.settingsItem}>
+        <label id={cellSizeId}>Cell Size</label>
+        <Input
+          type="number"
+          aria-labelledby={cellSizeId}
+          value={cellSize.toString()}
+          onChange={onCellSizeChange}
+        ></Input>
       </div>
 
       <div className={styles.settingsItem}>
