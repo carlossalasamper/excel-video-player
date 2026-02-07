@@ -23,7 +23,14 @@ videoPlayerStore.subscribe(
   (isPlaying) => {
     if (isPlaying) {
       Excel.run(async (context) => {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        const existingSheet =
+          context.workbook.worksheets.getItemOrNullObject("Excel Video Player");
+
+        await context.sync();
+
+        const sheet = existingSheet.isNullObject
+          ? context.workbook.worksheets.add("Excel Video Player")
+          : existingSheet;
         const resolution = settingsStore.getState().resolution;
         const cellSize = settingsStore.getState().cellSize;
         const rangeAddress = getSheetRangeAddress(
@@ -31,6 +38,8 @@ videoPlayerStore.subscribe(
           resolution.height
         );
         const range = sheet.getRange(rangeAddress);
+
+        sheet.activate();
 
         range.format.columnWidth = cellSize;
         range.format.rowHeight = cellSize;
