@@ -7,8 +7,8 @@ import {
   InputOnChangeData,
   Button,
 } from "@fluentui/react-components";
-import { useVideoPlayerStore } from "@/presentation/stores/videoPlayerStore";
-import { useSettingsStore } from "@/presentation/stores/settingsStore";
+import { useVideoPlayerStore } from "@/stores/videoPlayerStore";
+import { useSettingsStore } from "@/stores/settingsStore";
 
 const useStyles = makeStyles({
   wrapper: {

@@ -1,5 +1,5 @@
-import { useSettingsStore } from "@/presentation/stores/settingsStore";
-import { useVideoPlayerStore } from "@/presentation/stores/videoPlayerStore";
+import { useSettingsStore } from "@/stores/settingsStore";
+import { useVideoPlayerStore } from "@/stores/videoPlayerStore";
 import { makeStyles, tokens } from "@fluentui/react-components";
 import { useCallback, useEffect, useRef } from "react";
 

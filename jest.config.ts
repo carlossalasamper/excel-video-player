@@ -7,7 +7,7 @@ const jestUnitConfig: JestConfigWithTsJest = {
   testMatch: ["**/*.spec.ts"],
   collectCoverage: true,
   coverageDirectory: "./coverage",
-  collectCoverageFrom: ["./src/**/*.ts", "!./src/presentation/**/*.ts"],
+  collectCoverageFrom: ["./src/utils/*.ts"],
   coverageReporters: ["text", "json-summary"],
 };
 
