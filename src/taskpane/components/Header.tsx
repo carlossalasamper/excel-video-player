@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightRegular,
     fontColor: tokens.colorNeutralBackgroundStatic,
     margin: 0,
-    marginBottom: "16px",
+    marginBottom: "12px",
   },
   actions: {
     display: "flex",

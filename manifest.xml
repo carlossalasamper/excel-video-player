@@ -82,7 +82,7 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Play videos in Excel sheets!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Excel Video Player"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Excel Video Player add-in loaded successfully."/>
