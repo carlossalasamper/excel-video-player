@@ -1,7 +1,7 @@
 # Excel Video Player
 
 <p align="center">
-<img src="./assets/logo.jpg" alt="" width="300" height="300" />
+<img src="./assets/images/banner.webp" alt="" width="100%" style="max-width: 900px;" alt="Excel Video Player banner." />
 </p>
 <p align="center">
 📺 Add-in to visualize videos in Excel sheets.
@@ -10,8 +10,8 @@
 ## Table of Contents
 
 - [Why](#why)
-- [How it Works](#how-it-works)
 - [Benchmarks](#benchmarks)
+- [How it Works](#how-it-works)
 - [Stack](#stack)
 - [How To Run This Project](#how-to-run-this-project)
 - [Build Excel Add-ins Using Office Add-ins Development Kit](#build-excel-add-ins-using-office-add-ins-development-kit)
@@ -20,13 +20,37 @@
 
 ## Why
 
-The real question is, **why not?**
+The real question is, **WHY NOT?**
 
 Since Excel's inception, its grid system has been used for a wide variety of applications. So why not interpret it as a pixel matrix and **turn it into a monitor for playing videos**?
 
 This is another challenge for tech geeks, where we'll have to use **algorithm optimization and image/video processing techniques** to overcome Excel's technical limitations and <u>achieve the best possible performance</u>.
 
 Help me discover how far we can go.
+
+## Benchmarks
+
+The more FPS, the better!
+
+|     |                        Developer                        | FPS | Resolution | Color depth | Platform | Other conditions |
+| :-: | :-----------------------------------------------------: | :-: | :--------: | :---------: | :------: | :--------------: |
+| 🥇  | [carlossalasamper](https://github.com/carlossalasamper) |  5  |    16x9    |   24-bit    |   Web    |        -         |
+| 🥈  | [carlossalasamper](https://github.com/carlossalasamper) |  2  |   32x18    |   24-bit    |   Web    |        -         |
+| 🥉  | [carlossalasamper](https://github.com/carlossalasamper) |  1  |   64x36    |   24-bit    |   Web    |        -         |
+| #4  |                            -                            |  -  |     -      |      -      |    -     |        -         |
+| #5  |                            -                            |  -  |     -      |      -      |    -     |        -         |
+| #6  |                            -                            |  -  |     -      |      -      |    -     |        -         |
+| #7  |                            -                            |  -  |     -      |      -      |    -     |        -         |
+| #8  |                            -                            |  -  |     -      |      -      |    -     |        -         |
+| #9  |                            -                            |  -  |     -      |      -      |    -     |        -         |
+| #10 |                            -                            |  -  |     -      |      -      |    -     |        -         |
+
+### Can You Do It Better? Prove It.
+
+1. 💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare).
+2. ✅ I will validate the benchmark on my machine as soon as possible.
+
+<small>A benchmark will be considered valid if it maintains the number of frames per second without freezing for the entire duration of [the project's test video](./assets/videos/big-buck-bunny-360p.mp4).</small>
 
 ## How It Works
 
@@ -41,23 +65,6 @@ Help me discover how far we can go.
 5. Finally we update the Excel sheet based on the [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) obtained.
 
 <small>This is the current core flow of the add-in, but it is subject to change if we find a more optimal way to do it.</small>
-
-## Benchmarks
-
-_The more FPS, the better!_
-
-|     | FPS | Resolution | Color depth | Platform | Other conditions |                        Developer                        |
-| :-: | :-: | :--------: | :---------: | :------: | :--------------: | :-----------------------------------------------------: |
-| 🥇  |  5  |    16x9    |   24-bit    |   Web    |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
-| 🥈  |  2  |   32x18    |   24-bit    |   Web    |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
-| 🥉  |  1  |   64x36    |   24-bit    |   Web    |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
-
-### Can You Do It Better? Prove It.
-
-1. 💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare).
-2. ✅ I will validate the benchmark on my machine as soon as possible.
-
-<small>A benchmark will be considered valid if it maintains the number of frames per second without freezing for the entire duration of [the project's test video](./assets/videos/big-buck-bunny-360p.mp4).</small>
 
 ## Stack
 

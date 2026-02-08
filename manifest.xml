@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Excel Video Player"/>
   <Description DefaultValue="📺 Add-in to visualize videos in Excel sheets."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/images/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/images/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -70,9 +70,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/images/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/images/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/images/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
@@ -80,12 +80,12 @@
         <bt:Url id="Shared.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Start using Excel as a monitor!"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Play videos in Excel sheets!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Excel Video Player add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Excel Video Player add-in loaded successfully."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to open Excel Video Player"/>
       </bt:LongStrings>
     </Resources>

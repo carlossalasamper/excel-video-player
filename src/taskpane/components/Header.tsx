@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Image, tokens, makeStyles } from "@fluentui/react-components";
+import { Star16Filled } from "@fluentui/react-icons";
 
 export interface HeaderProps {
   title: string;
   subtitle?: string;
-  logoAlt: string;
-  logo: string;
 }
 
 const useStyles = makeStyles({
@@ -13,32 +12,55 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingBottom: "30px",
-    paddingTop: "100px",
+    paddingBottom: "24px",
     backgroundColor: tokens.colorNeutralBackground3,
   },
-  title: {
-    fontSize: tokens.fontSizeHero900,
-    fontWeight: tokens.fontWeightRegular,
-    fontColor: tokens.colorNeutralBackgroundStatic,
-    marginBlockEnd: "16px",
+  banner: {
+    width: "100%",
+    objectFit: "cover",
+    marginBottom: "16px",
   },
   subtitle: {
     fontSize: tokens.fontSizeBase400,
     fontWeight: tokens.fontWeightRegular,
     fontColor: tokens.colorNeutralBackgroundStatic,
+    margin: 0,
+    marginBottom: "16px",
+  },
+  actions: {
+    display: "flex",
+    gap: "12px",
+  },
+  action: {
+    display: "flex",
+    alignItems: "center",
+    gap: "4px",
   },
 });
 
-const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
-  const { title, subtitle, logo, logoAlt } = props;
+const Header = () => {
   const styles = useStyles();
 
   return (
     <section className={styles.wrapper}>
-      <Image width="90" height="90" src={logo} alt={logoAlt} />
-      <h1 className={styles.title}>{title}</h1>
-      <p className={styles.subtitle}>{subtitle}</p>
+      <Image
+        className={styles.banner}
+        src={"assets/images/banner.webp"}
+        alt="Excel Video Player Banner"
+      />
+      <h2 className={styles.subtitle}>
+        📺 Add-in to visualize videos in Excel sheets.
+      </h2>
+      <div className={styles.actions}>
+        <a
+          className={styles.action}
+          href="https://github.com/carlossalasamper/excel-video-player"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub <Star16Filled />
+        </a>
+      </div>
     </section>
   );
 };

@@ -14,14 +14,8 @@ const App = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Header
-        title="Excel Video Player"
-        subtitle="📺 Add-in to visualize videos in Excel sheets."
-        logo="assets/logo-filled.png"
-        logoAlt="Excel Video Player"
-      />
+      <Header />
       <Settings />
-
       <VideoPlayer />
     </div>
   );
