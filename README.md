@@ -46,11 +46,11 @@ Help me discover how far we can go.
 
 _The more FPS, the better!_
 
-|     | FPS | Resolution | Color depth (bpp) | Other conditions |                        Developer                        |
-| :-: | :-: | :--------: | :---------------: | :--------------: | :-----------------------------------------------------: |
-| 🥇  |  5  |    16x9    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
-| 🥈  |  2  |   32x18    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
-| 🥉  |  1  |   64x36    |        24         |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
+|     | FPS | Resolution | Color depth | Platform | Other conditions |                        Developer                        |
+| :-: | :-: | :--------: | :---------: | :------: | :--------------: | :-----------------------------------------------------: |
+| 🥇  |  5  |    16x9    |   24-bit    |   Web    |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
+| 🥈  |  2  |   32x18    |   24-bit    |   Web    |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
+| 🥉  |  1  |   64x36    |   24-bit    |   Web    |        -         | [carlossalasamper](https://github.com/carlossalasamper) |
 
 ### Can You Do It Better? Prove It.
 
