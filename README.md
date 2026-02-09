@@ -50,7 +50,7 @@ The more FPS, the better!
 1. 💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare).
 2. ✅ I will validate the benchmark on my machine as soon as possible.
 
-<small>A benchmark will be considered valid if it maintains the number of frames per second without freezing for the entire duration of [the project's test video](./assets/videos/big-buck-bunny-360p.mp4).</small>
+<small>A benchmark will be considered valid if **it maintains the number of frames per second without freezing during 30s** using [the project's test video](./assets/videos/big-buck-bunny-360p.mp4).</small>
 
 ## How It Works
 
