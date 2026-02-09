@@ -16,10 +16,10 @@ interface SettingsState {
 
 const settingsStore = createStore<SettingsState>()(
   subscribeWithSelector((set) => ({
-    resolution: { width: 160, height: 90 },
+    resolution: { width: 16, height: 9 },
     cellSize: 4,
-    fps: 2,
-    videoUrl: "",
+    fps: 5,
+    videoUrl: "assets/videos/big-buck-bunny-360p.mp4",
     setResolution: (resolution: Resolution) => {
       set(() => ({ resolution }));
     },

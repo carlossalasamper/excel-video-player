@@ -5,9 +5,7 @@ import {
   makeStyles,
   Input,
   InputOnChangeData,
-  Button,
 } from "@fluentui/react-components";
-import { useVideoPlayerStore } from "@/stores/videoPlayerStore";
 import { useSettingsStore } from "@/stores/settingsStore";
 
 const useStyles = makeStyles({
@@ -32,12 +30,6 @@ const useStyles = makeStyles({
   resolutionInput: {
     maxWidth: "80px",
   },
-  playButton: {
-    margin: "16px 24px",
-  },
-  pauseButton: {
-    margin: "16px 24px",
-  },
 });
 
 const Settings: React.FC = () => {
@@ -53,8 +45,6 @@ const Settings: React.FC = () => {
   const setFps = useSettingsStore((state) => state.setFps);
   const videoUrl = useSettingsStore((state) => state.videoUrl);
   const setVideoUrl = useSettingsStore((state) => state.setVideoUrl);
-  const isPlaying = useVideoPlayerStore((state) => state.isPlaying);
-  const setIsPlaying = useVideoPlayerStore((state) => state.setIsPlaying);
   const onResolutionXChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     data: InputOnChangeData
@@ -85,15 +75,19 @@ const Settings: React.FC = () => {
   ) => {
     setVideoUrl(data.value);
   };
-  const onPlayButtonClick = () => {
-    setIsPlaying(true);
-  };
-  const onPauseButtonClick = () => {
-    setIsPlaying(false);
-  };
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.settingsItem}>
+        <label id={videoUrlId}>Video URL</label>
+        <Input
+          type="text"
+          aria-labelledby={videoUrlId}
+          value={videoUrl}
+          onChange={onVideoUrlChange}
+        ></Input>
+      </div>
+
       <div className={styles.settingsItem}>
         <label>Resolution</label>
         <div className={styles.inputRow}>
@@ -116,18 +110,7 @@ const Settings: React.FC = () => {
       </div>
 
       <div className={styles.settingsItem}>
-        <label id={cellSizeId}>Cell Size</label>
-        <Input
-          type="number"
-          aria-labelledby={cellSizeId}
-          value={cellSize.toString()}
-          onChange={onCellSizeChange}
-          min={1}
-        ></Input>
-      </div>
-
-      <div className={styles.settingsItem}>
-        <label id={fpsId}>FPS</label>
+        <label id={fpsId}>Target FPS</label>
         <Input
           type="number"
           aria-labelledby={fpsId}
@@ -138,32 +121,15 @@ const Settings: React.FC = () => {
       </div>
 
       <div className={styles.settingsItem}>
-        <label id={videoUrlId}>Video URL</label>
+        <label id={cellSizeId}>Cell Size</label>
         <Input
-          type="text"
-          aria-labelledby={videoUrlId}
-          value={videoUrl}
-          onChange={onVideoUrlChange}
+          type="number"
+          aria-labelledby={cellSizeId}
+          value={cellSize.toString()}
+          onChange={onCellSizeChange}
+          min={1}
         ></Input>
       </div>
-
-      {!isPlaying ? (
-        <Button
-          className={styles.playButton}
-          appearance="primary"
-          onClick={onPlayButtonClick}
-        >
-          Play
-        </Button>
-      ) : (
-        <Button
-          className={styles.pauseButton}
-          appearance="secondary"
-          onClick={onPauseButtonClick}
-        >
-          Pause
-        </Button>
-      )}
     </div>
   );
 };

@@ -97,7 +97,6 @@ const VideoPlayer = () => {
       } else {
         video.pause();
         setTime(video.currentTime);
-
         stopDrawing();
       }
     }
@@ -107,7 +106,7 @@ const VideoPlayer = () => {
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.outputLabel}>Video Player</p>
+      <p className={styles.outputLabel}>Original Video</p>
       <video
         ref={videoRef}
         className={styles.video}

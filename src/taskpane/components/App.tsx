@@ -2,6 +2,7 @@ import Header from "./Header";
 import { makeStyles } from "@fluentui/react-components";
 import Settings from "./Settings";
 import VideoPlayer from "./VideoPlayer";
+import VideoPlayerControls from "./VideoPlayerControls";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -16,6 +17,7 @@ const App = () => {
     <div className={styles.wrapper}>
       <Header />
       <Settings />
+      <VideoPlayerControls />
       <VideoPlayer />
     </div>
   );
