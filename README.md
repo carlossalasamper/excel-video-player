@@ -30,27 +30,31 @@ Help me discover how far we can go.
 
 ## Benchmarks
 
-The more FPS, the better!
+The more resolution, the better!
 
-|     |                        Developer                        | FPS | Resolution | Color depth | Platform | Other conditions |
-| :-: | :-----------------------------------------------------: | :-: | :--------: | :---------: | :------: | :--------------: |
-| 🥇  | [carlossalasamper](https://github.com/carlossalasamper) |  5  |    16x9    |   24-bit    |   Web    |        -         |
-| 🥈  | [carlossalasamper](https://github.com/carlossalasamper) |  2  |   32x18    |   24-bit    |   Web    |        -         |
-| 🥉  | [carlossalasamper](https://github.com/carlossalasamper) |  1  |   64x36    |   24-bit    |   Web    |        -         |
-| #4  |                            -                            |  -  |     -      |      -      |    -     |        -         |
-| #5  |                            -                            |  -  |     -      |      -      |    -     |        -         |
-| #6  |                            -                            |  -  |     -      |      -      |    -     |        -         |
-| #7  |                            -                            |  -  |     -      |      -      |    -     |        -         |
-| #8  |                            -                            |  -  |     -      |      -      |    -     |        -         |
-| #9  |                            -                            |  -  |     -      |      -      |    -     |        -         |
-| #10 |                            -                            |  -  |     -      |      -      |    -     |        -         |
+|     |                        Developer                        | Resolution | FPS | Color depth | Platform | Other conditions |
+| :-: | :-----------------------------------------------------: | :--------: | :-: | :---------: | :------: | :--------------: |
+| 🥇  | [carlossalasamper](https://github.com/carlossalasamper) |   64x36    |  1  |   24-bit    |   Web    |        -         |
+| 🥈  | [carlossalasamper](https://github.com/carlossalasamper) |   32x18    |  2  |   24-bit    |   Web    |        -         |
+| 🥉  | [carlossalasamper](https://github.com/carlossalasamper) |    16x9    |  5  |   24-bit    |   Web    |        -         |
+| #4  |                            -                            |     -      |  -  |      -      |    -     |        -         |
+| #5  |                            -                            |     -      |  -  |      -      |    -     |        -         |
+| #6  |                            -                            |     -      |  -  |      -      |    -     |        -         |
+| #7  |                            -                            |     -      |  -  |      -      |    -     |        -         |
+| #8  |                            -                            |     -      |  -  |      -      |    -     |        -         |
+| #9  |                            -                            |     -      |  -  |      -      |    -     |        -         |
+| #10 |                            -                            |     -      |  -  |      -      |    -     |        -         |
 
 ### Can You Do It Better? Prove It.
 
-1. 💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare).
-2. ✅ I will validate the benchmark on my machine as soon as possible.
+💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare) and I'll validate the benchmark on my machine as soon as possible.
 
-<small>A benchmark will be considered valid if **it maintains the number of frames per second without freezing during 30s** using [the project's test video](./assets/videos/big-buck-bunny-360p.mp4).</small>
+These are the requirements that a solution must meet to be considered valid:
+
+- The **FPS must be constant for at least the first 15 seconds** of the [project's test video](./assets/videos/big-buck-bunny-360p.mp4).
+- The number of **FPS must be equal to or greater than 1**.
+
+<small>Approved optimizations will be included in the project and future developers will work on the current version.</small>
 
 ## How It Works
 
