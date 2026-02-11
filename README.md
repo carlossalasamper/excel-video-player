@@ -47,7 +47,7 @@ The more resolution, the better!
 
 ### Can You Do It Better? Prove It.
 
-💻 Make the necessary changes in a new branch and [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare) and I'll validate the benchmark on my machine as soon as possible.
+💻 Make the necessary changes in a new branch, [create a pull request](https://github.com/carlossalasamper/excel-video-player/compare) and I'll validate the benchmark on my machine as soon as possible.
 
 These are the requirements that a solution must meet to be considered valid:
 
