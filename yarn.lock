@@ -7545,6 +7545,14 @@ office-addin-manifest@^2.0.3, office-addin-manifest@^2.1.2:
     uuid "^8.3.2"
     xml2js "^0.5.0"
 
+office-addin-mock@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/office-addin-mock/-/office-addin-mock-3.0.6.tgz#ecd4e8c0782152782279ae87f0623446e014e8cd"
+  integrity sha512-J9M1K3ckZD2FmcisD62WJ7A1wSmE00Tv37f140sTvvzULx8US284ymdW40WMM4/6SWxEf6AFQ0BvsAhz6F4JpQ==
+  dependencies:
+    office-addin-manifest "^2.1.2"
+    office-addin-usage-data "^2.0.6"
+
 office-addin-node-debugger@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/office-addin-node-debugger/-/office-addin-node-debugger-1.0.6.tgz#044ec18cfd2a44b22bbfe0e109840ecacc39cb04"

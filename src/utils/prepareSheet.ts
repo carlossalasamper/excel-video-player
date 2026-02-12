@@ -1,8 +1,7 @@
-import settingsStore from "@/stores/settingsStore";
-import videoPlayerStore from "@/stores/videoPlayerStore";
 import { getSheetRangeAddress } from "./getSheetRangeAddress";
+import Resolution from "@/types/Resolution";
 
-export default function prepareSheet() {
+export default function prepareSheet(resolution: Resolution, cellSize: number) {
   Excel.run(async (context) => {
     const existingSheet =
       context.workbook.worksheets.getItemOrNullObject("Excel Video Player");
@@ -14,9 +13,6 @@ export default function prepareSheet() {
     const sheet = existingSheet.isNullObject
       ? context.workbook.worksheets.add("Excel Video Player")
       : existingSheet;
-    const resolution = settingsStore.getState().resolution;
-    const cellSize = settingsStore.getState().cellSize;
-    const time = videoPlayerStore.getState().time;
     const rangeAddress = getSheetRangeAddress(
       resolution.width,
       resolution.height
@@ -24,10 +20,7 @@ export default function prepareSheet() {
     const range = sheet.getRange(rangeAddress);
 
     sheet.activate();
-
-    if (time === 0) {
-      sheet.getUsedRange().clear();
-    }
+    sheet.getUsedRange().clear();
 
     range.format.columnWidth = cellSize;
     range.format.rowHeight = cellSize;

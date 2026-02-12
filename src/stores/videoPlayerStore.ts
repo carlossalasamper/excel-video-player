@@ -4,6 +4,7 @@ import { createStore } from "zustand/vanilla";
 import renderFrame from "@/utils/renderFrame";
 import prepareSheet from "@/utils/prepareSheet";
 import setCalculationMode from "@/utils/setCalculationMode";
+import settingsStore from "./settingsStore";
 
 interface VideoPlayerState {
   isPlaying: boolean;
@@ -35,7 +36,9 @@ videoPlayerStore.subscribe(
   (state) => state.isPlaying,
   (isPlaying) => {
     if (isPlaying) {
-      prepareSheet();
+      const { resolution, cellSize } = settingsStore.getState();
+
+      prepareSheet(resolution, cellSize);
     } else {
       setCalculationMode(Excel.CalculationMode.automatic);
     }
