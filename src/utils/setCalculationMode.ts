@@ -1,5 +1,5 @@
 export default function setCalculationMode(mode: Excel.CalculationMode) {
-  Excel.run(async (context) => {
+  return Excel.run(async (context) => {
     context.application.calculationMode = mode;
     await context.sync();
   }).catch((error) => {

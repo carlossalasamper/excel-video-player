@@ -1,6 +1,6 @@
-import { OfficeMockObject } from "office-addin-mock";
-import prepareSheet from "./prepareSheet";
-import createExcelMockData from "./createExcelMockData";
+import createExcelMock from "@/utils/createExcelMock";
+import createExcelMockData from "@/utils/createExcelMockData";
+import prepareSheet from "@/utils/prepareSheet";
 
 describe("prepareSheet", () => {
   it("Should prepare the Excel sheet correctly.", async function () {
@@ -27,25 +27,20 @@ describe("prepareSheet", () => {
         },
       },
     ];
-    const mockData = createExcelMockData({
-      context: {
-        application: {
-          calculationMode: "Automatic",
-        },
-        workbook: {
-          worksheets: {
-            items: worksheetItems,
-            getItemOrNullObject: function (name: string) {
-              const sheet = worksheetItems.find(
-                (sheet: { name: string }) => sheet.name === name
-              );
-              return sheet ? sheet : { isNullObject: true };
-            },
+    const excelMockData = createExcelMockData({
+      workbook: {
+        worksheets: {
+          items: worksheetItems,
+          getItemOrNullObject: function (name: string) {
+            const sheet = worksheetItems.find(
+              (sheet: { name: string }) => sheet.name === name
+            );
+            return sheet ? sheet : { isNullObject: true };
           },
         },
       },
     });
-    const excelMock = new OfficeMockObject(mockData);
+    const excelMock = createExcelMock(excelMockData);
 
     global.Excel = excelMock as unknown as typeof Excel;
 

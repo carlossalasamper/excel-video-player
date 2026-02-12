@@ -3,9 +3,9 @@
 import ExcelMockData from "@/types/ExcelMockData";
 
 export default function createExcelMockData(
-  data: Record<string, any>
+  context: Record<string, any> = {}
 ): ExcelMockData {
-  return {
+  const mockData: ExcelMockData = {
     run: async function (
       callback: (context: Partial<Excel.RequestContext>) => Promise<void>
     ) {
@@ -16,7 +16,13 @@ export default function createExcelMockData(
       automatic: "Automatic",
       automaticExceptTables: "AutomaticExceptTables",
     },
-    context: {},
-    ...data,
+    context: {
+      application: {
+        calculationMode: "Automatic",
+      },
+      ...context,
+    },
   };
+
+  return mockData;
 }

@@ -4,7 +4,10 @@ const jestUnitConfig: JestConfigWithTsJest = {
   preset: "ts-jest",
   testEnvironment: "node",
   transformIgnorePatterns: ["/node_modules/"],
-  testMatch: ["**/*.spec.ts"],
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
+  testMatch: ["**/test/**/*.spec.ts"],
   collectCoverage: true,
   coverageDirectory: "./coverage",
   collectCoverageFrom: ["./src/utils/*.ts"],

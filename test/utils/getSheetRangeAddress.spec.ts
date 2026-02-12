@@ -1,4 +1,4 @@
-import { getSheetRangeAddress } from "./getSheetRangeAddress";
+import { getSheetRangeAddress } from "@/utils/getSheetRangeAddress";
 
 describe("getSheetRangeAddress", () => {
   it("Should return the correct Excel range string given width and height.", () => {

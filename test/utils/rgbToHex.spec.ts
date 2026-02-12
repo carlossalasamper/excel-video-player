@@ -1,4 +1,4 @@
-import { rgbToHex } from "./rgbToHex";
+import { rgbToHex } from "@/utils/rgbToHex";
 
 describe("rgbToHex", () => {
   it("Should convert RGB values to Hex string", () => {
