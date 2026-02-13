@@ -10,16 +10,21 @@ interface VideoPlayerState {
   isPlaying: boolean;
   time: number;
   currentFrameData: ImageData | null;
+  errors: Error[];
   setIsPlaying: (isPlaying: boolean) => void;
   setTime: (time: number) => void;
   setCurrentFrameData: (frameData: ImageData) => void;
+  addError: (error: Error) => void;
+  clearErrors: () => void;
+  getLastError: () => Error | null;
 }
 
 const videoPlayerStore = createStore<VideoPlayerState>()(
-  subscribeWithSelector((set) => ({
+  subscribeWithSelector((set, get) => ({
     isPlaying: false,
     time: 0,
     currentFrameData: null,
+    errors: [],
     setIsPlaying: (isPlaying: boolean) => {
       set(() => ({ isPlaying }));
     },
@@ -29,16 +34,31 @@ const videoPlayerStore = createStore<VideoPlayerState>()(
     setCurrentFrameData: (frameData: ImageData) => {
       set(() => ({ currentFrameData: frameData }));
     },
+    addError: (error: Error) => {
+      set((state) => ({ errors: [...state.errors, error] }));
+    },
+    clearErrors: () => {
+      set(() => ({ errors: [] }));
+    },
+    getLastError: () => {
+      return get().errors[get().errors.length - 1] || null;
+    },
   }))
 );
 
 videoPlayerStore.subscribe(
   (state) => state.isPlaying,
-  (isPlaying) => {
+  async (isPlaying) => {
     if (isPlaying) {
       const { resolution, cellSize } = settingsStore.getState();
+      const { addError, clearErrors } = videoPlayerStore.getState();
 
-      prepareSheet(resolution, cellSize);
+      try {
+        await prepareSheet(resolution, cellSize);
+        clearErrors();
+      } catch (error) {
+        addError(error as Error);
+      }
     } else {
       setCalculationMode(Excel.CalculationMode.automatic);
     }
@@ -47,10 +67,17 @@ videoPlayerStore.subscribe(
 
 videoPlayerStore.subscribe(
   (state) => state.currentFrameData,
-  (frameData) => {
+  async (frameData) => {
     if (frameData) {
-      const resolution = settingsStore.getState().resolution;
-      renderFrame(frameData, resolution);
+      const { resolution } = settingsStore.getState();
+      const { addError, clearErrors } = videoPlayerStore.getState();
+
+      try {
+        await renderFrame(frameData, resolution);
+        clearErrors();
+      } catch (error) {
+        addError(error as Error);
+      }
     }
   }
 );

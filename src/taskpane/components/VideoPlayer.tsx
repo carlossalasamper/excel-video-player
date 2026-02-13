@@ -25,6 +25,23 @@ const useStyles = makeStyles({
   outputLabel: {
     margin: "0",
   },
+  errorWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    marginBottom: "16px",
+  },
+  errorCount: {
+    color: tokens.colorPaletteRedForeground1,
+    fontWeight: "bold",
+    margin: 0,
+  },
+  errorMessage: {
+    color: tokens.colorPaletteRedForeground1,
+    backgroundColor: tokens.colorPaletteRedBackground1,
+    padding: "8px",
+    margin: 0,
+  },
 });
 
 const VideoPlayer = () => {
@@ -47,6 +64,8 @@ const VideoPlayer = () => {
       intervalRef.current = null;
     }
   }, []);
+  const errors = useVideoPlayerStore((state) => state.errors);
+  const lastError = useVideoPlayerStore((state) => state.getLastError());
   const startDrawing = useCallback(() => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -106,6 +125,15 @@ const VideoPlayer = () => {
 
   return (
     <div className={styles.wrapper}>
+      {errors.length > 1 && (
+        <div className={styles.errorWrapper}>
+          {lastError && (
+            <p className={styles.errorMessage}>{lastError.message}</p>
+          )}
+          <p className={styles.errorCount}>{errors.length} errors occurred.</p>
+        </div>
+      )}
+
       <p className={styles.outputLabel}>Original Video</p>
       <video
         ref={videoRef}

@@ -51,7 +51,7 @@ The more resolution, the better!
 
 These are the requirements that a solution must meet to be considered valid:
 
-- The **FPS must be constant for at least the first 15 seconds** of the [project's test video](./assets/videos/big-buck-bunny-360p.mp4).
+- The **FPS must be constant for at least the first 30 seconds** of the [project's test video](./assets/videos/big-buck-bunny-360p.mp4).
 - The number of **FPS must be equal to or greater than 1**.
 
 <small>Approved optimizations will be included in the project and future developers will work on the current version.</small>
