@@ -2,7 +2,7 @@ import { getSheetRangeAddress } from "./getSheetRangeAddress";
 import Resolution from "@/types/Resolution";
 
 export default function prepareSheet(resolution: Resolution, cellSize: number) {
-  Excel.run(async (context) => {
+  return Excel.run(async (context) => {
     const existingSheet =
       context.workbook.worksheets.getItemOrNullObject("Excel Video Player");
 
@@ -27,6 +27,6 @@ export default function prepareSheet(resolution: Resolution, cellSize: number) {
 
     await context.sync();
   }).catch((error) => {
-    console.error("Error preparing Excel sheet:", error);
+    throw error;
   });
 }

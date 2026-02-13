@@ -2,12 +2,13 @@ import type { JestConfigWithTsJest } from "ts-jest";
 
 const jestUnitConfig: JestConfigWithTsJest = {
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/test/jest.setup.ts"],
   transformIgnorePatterns: ["/node_modules/"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
-  testMatch: ["**/test/**/*.spec.ts"],
+  testMatch: ["<rootDir>/test/**/*.spec.ts"],
   collectCoverage: true,
   coverageDirectory: "./coverage",
   collectCoverageFrom: ["./src/utils/*.ts"],

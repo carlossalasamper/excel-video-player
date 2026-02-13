@@ -1,4 +1,4 @@
-import createExcelMockData from "@/utils/createExcelMockData";
+import createExcelMockData from "@/utils/test/createExcelMockData";
 
 describe("createExcelMockData", () => {
   it("Should create Excel mock data with custom workbook.", () => {

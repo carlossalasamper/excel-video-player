@@ -1,6 +1,7 @@
-import createExcelMock from "@/utils/createExcelMock";
-import createExcelMockData from "@/utils/createExcelMockData";
+import createExcelMock from "@/utils/test/createExcelMock";
+import createExcelMockData from "@/utils/test/createExcelMockData";
 import setCalculationMode from "@/utils/setCalculationMode";
+import setExcelMock from "@/utils/test/setExcelMock";
 
 describe("setCalculationMode", () => {
   it("Should set the calculation mode correctly.", async function () {
@@ -8,7 +9,7 @@ describe("setCalculationMode", () => {
     const excelMock = createExcelMock(excelMockData);
     const manualMode = "Manual" as Excel.CalculationMode;
 
-    global.Excel = excelMock as unknown as typeof Excel;
+    setExcelMock(excelMock);
 
     await setCalculationMode(manualMode);
 
@@ -22,7 +23,7 @@ describe("setCalculationMode", () => {
     const excelMock = createExcelMock(excelMockData);
     const manualMode = "Manual" as Excel.CalculationMode;
 
-    global.Excel = excelMock as unknown as typeof Excel;
+    setExcelMock(excelMock);
 
     const consoleErrorSpy = jest
       .spyOn(console, "error")

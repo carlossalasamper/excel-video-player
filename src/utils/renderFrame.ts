@@ -1,11 +1,13 @@
-import settingsStore from "@/stores/settingsStore";
 import { getSheetRangeAddress } from "./getSheetRangeAddress";
 import { rgbToHex } from "./rgbToHex";
+import Resolution from "@/types/Resolution";
 
-export default function renderFrame(frameData: ImageData) {
-  Excel.run(async (context) => {
+export default function renderFrame(
+  frameData: ImageData,
+  resolution: Resolution
+) {
+  return Excel.run(async (context) => {
     const sheet = context.workbook.worksheets.getItem("Excel Video Player");
-    const resolution = settingsStore.getState().resolution;
     const rangeAddress = getSheetRangeAddress(
       resolution.width,
       resolution.height
@@ -37,6 +39,6 @@ export default function renderFrame(frameData: ImageData) {
 
     await context.sync();
   }).catch((error) => {
-    console.error("Error updating Excel cell colors:", error);
+    throw error;
   });
 }

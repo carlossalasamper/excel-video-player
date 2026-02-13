@@ -49,7 +49,8 @@ videoPlayerStore.subscribe(
   (state) => state.currentFrameData,
   (frameData) => {
     if (frameData) {
-      renderFrame(frameData);
+      const resolution = settingsStore.getState().resolution;
+      renderFrame(frameData, resolution);
     }
   }
 );

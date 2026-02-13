@@ -1,5 +1,5 @@
-import createExcelMock from "@/utils/createExcelMock";
-import createExcelMockData from "@/utils/createExcelMockData";
+import createExcelMock from "@/utils/test/createExcelMock";
+import createExcelMockData from "@/utils/test/createExcelMockData";
 
 describe("createExcelMock", () => {
   it("Should create an Excel mock object correctly.", function () {
