@@ -124,7 +124,7 @@ Excel add-ins are integrations built by third parties into Excel by using [Excel
 
 ## Code You Can Trust
 
-You can trust this code. [See the tests](./test) for more information.
+[See the tests](./test) for more information.
 
 <img src="./assets/badges/coverage/badge-functions.svg" />
 <img src="./assets/badges/coverage/badge-lines.svg" />
