@@ -52,7 +52,7 @@
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-typescript": "^7.23.3",
-    "@carlossalasamper/eslint-config": "^0.1.4",
+    "@carlossalasamper/eslint-config": "^0.1.5",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@jest/globals": "^30.2.0",
